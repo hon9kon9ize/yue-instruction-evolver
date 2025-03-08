@@ -13,7 +13,7 @@ import requests
 import random
 from tenacity import retry, stop_after_attempt, wait_fixed
 
-GOOGLE_AISTUDIO_API_KEY = "YOUR_API_KEY"
+GOOGLE_AISTUDIO_API_KEY = "YOU_API_KEY"
 MODEL_NAME = "gemini-2.0-flash"
 
 hans_chars = set(
@@ -370,6 +370,8 @@ def diverse(prompt: str):
         print("[diverse()]: prompt too short")
         raise Exception("Prompt too short")
 
+    return rewrited_prompt
+
 
 def evolate_or_diverse(prompt: str):
     if random.random() < 0.5:
@@ -440,26 +442,26 @@ if __name__ == "__main__":
                     seed_instructions + [r[prompt_column] for r in results]
                 )
 
-                # print("seed prompt", seed_prompt)
+                print("seed prompt", seed_prompt)
 
                 generated_instruction = evolate_or_diverse(seed_prompt)
 
-                # print('generated instruction', generated_instruction)
+                print("generated instruction", generated_instruction)
 
                 score = difficulty_judge(generated_instruction)
 
-                # print('score', score)
+                print("score", score)
 
                 if score < 3:
                     continue
 
                 response = generate_response(generated_instruction)
 
-                # print('response', response)
+                print("response", response)
 
                 score = evaluate_response(generated_instruction, response)
 
-                # print('score', score)
+                print("score", score)
 
                 if score < 3:
                     continue

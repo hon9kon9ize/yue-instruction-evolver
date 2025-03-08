@@ -13,7 +13,7 @@ import requests
 import random
 from tenacity import retry, stop_after_attempt, wait_fixed
 
-GOOGLE_AISTUDIO_API_KEY = "YOUR_API_KEY"
+GOOGLE_AISTUDIO_API_KEY = "YOU_API_KEY"
 MODEL_NAME = "gemini-2.0-flash"
 
 hans_chars = set(
